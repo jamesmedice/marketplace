@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 @EnableAutoConfiguration
-@EnableJpaRepositories(basePackages = "com.medici.repository")
-@ComponentScan(basePackages = { "com.medici" })
+@EnableJpaRepositories(basePackages = "com.marketplace.repository")
+@ComponentScan(basePackages = { "com.marketplace" })
 public class AutoConfiguration {
 
 }
