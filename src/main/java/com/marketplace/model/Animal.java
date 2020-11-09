@@ -58,11 +58,14 @@ public class Animal {
 
 	private String pedigreeDetails;
 
-	@JoinColumn(name = "ID_ANIMAL_ATTRIBUTES", referencedColumnName = "ID_ANIMAL_ATTRIBUTES", nullable = true)
+	@JoinColumn(name = "ID_ANIMAL", referencedColumnName = "ID_ANIMAL", nullable = true)
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<AnimalAttributes> additionalProperties;
 
-	@JoinColumn(name = "ID_OWNER", referencedColumnName = "ID_OWNER")
+	@Column(name = "ID_OWNER_PET")
+	private Long idOwner;
+
+	@JoinColumn(name = "ID_OWNER_PET", referencedColumnName = "ID_OWNER_PET", insertable = false, updatable = false)
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private OwnerPet ownerPet;
 

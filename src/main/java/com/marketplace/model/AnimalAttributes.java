@@ -23,6 +23,9 @@ public class AnimalAttributes {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(name = "ID_ANIMAL")
+	private Long idAnimal;
+
 	private String name;
 
 	private String description;

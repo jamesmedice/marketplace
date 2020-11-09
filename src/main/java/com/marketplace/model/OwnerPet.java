@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
 public class OwnerPet {
 
 	@Id
-	@Column(name = "ID_OWNER")
+	@Column(name = "ID_OWNER_PET")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
@@ -35,7 +35,7 @@ public class OwnerPet {
 
 	private String email;
 
-	@JoinColumn(name = "ID_ANIMAL", referencedColumnName = "ID_ANIMAL", nullable = true)
+	@JoinColumn(name = "ID_OWNER_PET", referencedColumnName = "ID_OWNER_PET")
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Animal> animals;
 
