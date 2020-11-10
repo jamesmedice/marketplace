@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -44,8 +45,6 @@ public class Animal {
 
 	private Date birthDate;
 
-	private Date availableDate;
-
 	private Boolean privateOwner;
 
 	private Boolean dogHouse;
@@ -58,7 +57,7 @@ public class Animal {
 
 	private String pedigreeDetails;
 
-	@JoinColumn(name = "ID_ANIMAL", referencedColumnName = "ID_ANIMAL", nullable = true)
+	@JoinColumn(name = "ID_ANIMAL", referencedColumnName = "ID_ANIMAL", nullable = true, insertable = false, updatable = false)
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<AnimalAttributes> additionalProperties;
 
@@ -68,5 +67,9 @@ public class Animal {
 	@JoinColumn(name = "ID_OWNER_PET", referencedColumnName = "ID_OWNER_PET", insertable = false, updatable = false)
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private OwnerPet ownerPet;
+
+	@JoinColumn(name = "ID_ANIMAL", referencedColumnName = "ID_ANIMAL", insertable = false, updatable = false)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Announcement announcement;
 
 }
