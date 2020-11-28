@@ -4,9 +4,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -31,7 +34,14 @@ public class Announcement {
 
 	private String description;
 
-	@Column(name = "ID_ANIMAL")
+	@Column(name = "ID_ANIMAL", nullable = true)
 	private Long idAnimal;
+
+	@Column(name = "ID_ANNOUNCEMENT_TYPE")
+	private Long idAnnouncementType;
+
+	@JoinColumn(name = "ID_ANNOUNCEMENT_TYPE", referencedColumnName = "ID_ANNOUNCEMENT_TYPE", insertable = false, updatable = false)
+	@OneToOne(fetch = FetchType.EAGER)
+	private AnnouncementType announcementType;
 
 }
