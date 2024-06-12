@@ -1,0 +1,4 @@
+spring_cloud_gcp_sql_instance_connection_name: ${spring_cloud_gcp_sql_instance_connection_name}
+user_profile: ${profile}
+project_id: ${project_id}
+spring_cloud_gcp_sql_database_name: ${spring_cloud_gcp_sql_database_name}

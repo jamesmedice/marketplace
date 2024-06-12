@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: marketplace
+  labels:
+    app: marketplace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: marketplace
+  template:
+    metadata:
+      labels:
+        app: marketplace
+    spec:
+      containers:
+      - name: marketplace
+        image: jamesmedice/marketplace:latest
+        imagePullPolicy: IfNotPresent
+        envFrom:
+        - configMapRef:
+            name: mysqldb
+        env:
+          - name: spring_datasource_username
+            valueFrom:
+              secretKeyRef:
+                name: db-secret
+                key: username
+          - name: spring_datasource_password
+            valueFrom:
+              secretKeyRef:
+                name: db-secret
+                key: password
+        ports:
+        - containerPort: 8080
+---
